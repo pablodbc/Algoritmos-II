@@ -2,7 +2,6 @@ from math import*
 from random import*
 #Insertion sort
 def insertionsort(A,p,r):
-	print(p,r)
 	for i in range(p+1,r+1):
 		key = A[i]
 		j = i-1
@@ -74,7 +73,11 @@ def quicksort(A,p,r):
 		else:
 			quicksort(A,p,m)
 			p = m
-	insertionsort(A,p,r)
+	#insertionsort(A,p,r)
 ############################################################################################################################################
-a = [randint(0,5000) for i in range(5000)]
+a = [1 for i in range(50)]
+a[0] = a[10] = 2
+print(a)
 quicksort(a,0,len(a)-1)
+#Partition(a,0,len(a)-1,1)
+print(a)
