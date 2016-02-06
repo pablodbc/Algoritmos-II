@@ -70,6 +70,8 @@ def median_of_three(a,b,c):
 	B.sort()
 	return B[1]
 ##########################################################################################################################################
+
+#Median-of-Three Quicksort
 def quicksort(A,p,r):
 	quicksort_loop(A,p,r)
 	insertionsort(A,p,r)
@@ -83,6 +85,24 @@ def quicksort_loop(A,p,r):
 			quicksort_loop(A,p,m)
 			p = m+1
 ############################################################################################################################################
-a = [randint(0,10) for i in range(4000)]
-insertionsort(a,0,len(a)-1)
+
+#Introsort
+def introsort(A,p,r):
+	introsort_loop(A,p,r,2*int(log(len(a),2)))
+	insertionsort(A,p,r)
+def introsort_loop(A,p,r,limit):
+	while r-p+1>15:
+		if limit == 0:
+			print("comenzando heapsort para",p,"y",r)
+			heapsort(A,p,r)
+			return 
+		else:
+			limit-=1
+			m = Partition(A,p,r,median_of_three(A[p],A[r],A[(p+r)//2]))
+			introsort_loop(A,m,r,limit)
+			r = m
+############################################################################################################################################
+
+a = [0+(1 if i%2 else 0) for i in range(40000000)]
+introsort(a,0,len(a)-1)
 esta_ordenado(a)
